@@ -1,0 +1,293 @@
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>LPIC-1 Exam Simulation</title>
+        <meta name="description" content="Web app for LPIC-1 certification simulation exam questions and answers">
+        <!-- Responsive Data -->
+        <meta name="viewport" content="width=max-width, initial-scale=1">
+	      <!-- Link to CSS -->
+    	  <link rel="stylesheet" href="css/admin.css">
+	      <!-- Link to FontAwesome -->
+	      <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    </head>
+
+    <body>
+        <!-- Article - This covers the displayed screen area -->
+        <article class="non-exam">
+            <!-- Header -->
+            <header>
+               <h4 class="left"><a href="index.html">LPIC-1 Certificiation Exam Simulation  -  Administration Page</a></h4>
+            </header>
+        </article> <!-- End Non Exam Class - I want the above to be 100% screen size, but the exam bit only want to cover 80% -->
+
+        <article class="exam">
+            <h3>Create, Read, Update and Delete Questions and Answers</h3>
+            <br />
+            <h4>Please select an element from each of the below items:</h4>
+            <br />
+	          <h5>CRUD action:
+		          <select id="selectCrud">
+                <option selected="selected" value="">Please select CRUD Action</option>
+		            <option value="GET">Get Questions</option>
+		            <option value="PUT">Update Question</option>
+                <option value="POST">Create New Question</option>
+                <option value="DELETE">Delete Question</option>
+		          </select>
+		        </h5>
+
+            <form id="getBy">
+              <h5>GET what?
+                  <select id="selectGetBy">
+                      <option selected="selected" value="">Please select your GET request</option>
+                      <option value="/">All Quesltions</option>
+                      <option value="/:id">by ID</option>
+                      <option value="/QuestionType/">by Question Type</option>
+                      <option value="/TopicName/">by Topic Sub-Name</option>
+                  </select>
+              </h5>
+            </form>
+
+            <input type="text" id="qID" placeholder="Enter Unique Question ID here" onfocus="this.value=''" autofocus ></input>
+
+            <form id="questionType">
+              <h5>Question Type
+                  <select id="selectQuestionType">
+                      <option selected="selected" value="">Please select a question type</option>
+                      <option value="single">Single Answer Questions</option>
+                      <option value="multiple">Multiple Answer Questions</option>
+                      <option value="typed">Type in the Box Questions</option>
+                  </select>
+              </h5>
+            </form>
+
+            <form id="examMainTopic">
+              <h5>Exam Topic:
+                  <select id="SelectExamMainTopic">
+                      <option selected="selected" value="">Please select exam topic</option>
+                      <option value="101">Topic 101: System Architecture</option>
+                      <option value="102">Topic 102: Linux Installation and Package Management</option>
+                      <option value="103">Topic 103: GNU and Unix Commands</option>
+                      <option value="104">Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard</option>
+                      <option value="105">Topic 105: Shells, Scripting and Data Management</option>
+                      <option value="106">Topic 106: User Interfaces and Desktops</option>
+                      <option value="107">Topic 107: Administrative Tasks</option>
+                      <option value="108">Topic 108: Essential System Services</option>
+                      <option value="109">Topic 109: Networking Fundamentals</option>
+                      <option value="110">Topic 110: Security</option>
+                  </select>
+              </h5>
+            </form>
+
+              <h5 id="examSubTopic101">Exam Topic 101: System Architecture:
+                  <select id="selectExamSubTopic101">
+                      <option selected="selected" value="">Please select exam sub-topic</option>
+                      <option value="1">101.1 - Determine and configure hardware settings</option>
+                      <option value="2">101.2 Boot the system</option>
+                      <option value="3">101.3 Change runlevels / boot targets and shutdown or reboot system</option>
+                  </select>
+              </h5>
+
+              <h5 id="examSubTopic102">Exam Topic 102: Linux Installation and Package Management:
+                  <select id="selectExamSubTopic102">
+                      <option selected="selected" value="">Please select exam sub-topic</option>
+                      <option value="1">102.1 Design hard disk layout</option>
+                      <option value="2">102.2 Install a boot manager</option>
+                      <option value="3">102.3 Manage shared libraries</option>
+                      <option value="4">102.4 Use Debian package management</option>
+                      <option value="5">102.5 Use RPM and YUM package management</option>
+                  </select>
+              </h5>
+
+                <h5 id="examSubTopic103">Exam Topic 103: GNU and Unix Commands:
+                    <select id="selectExamSubTopic103">
+                        <option selected="selected" value="">Please select exam sub-topic</option>
+                        <option value="1">103.1 Work on the command line</option>
+                        <option value="2">103.2 Process text streams using filters</option>
+                        <option value="3">103.3 Perform basic file management</option>
+                        <option value="4">103.4 Use streams, pipes and redirects</option>
+                        <option value="5">103.5 Create, monitor and kill processes</option>
+                        <option value="6">103.6 Modify process execution priorities</option>
+                        <option value="7">103.7 Search text files using regular expressions</option>
+                        <option value="8">103.8 Perform basic file editing operations using vi</option>
+                    </select>
+                </h5>
+
+                <h5 id="examSubTopic104">Exam Topic 104: Devices, Linux Filesystems, Filesystem Hierarchy Standard:
+                    <select id="selectExamSubTopic104">
+                        <option selected="selected" value="">Please select exam sub-topic</option>
+                        <option value="1">104.1 Create partitions and filesystems</option>
+                        <option value="2">104.2 Maintain the integrity of filesystems</option>
+                        <option value="3">104.3 Control mounting and unmounting of filesystems</option>
+                        <option value="4">104.4 Manage disk quotas</option>
+                        <option value="5">104.5 Manage file permissions and ownership</option>
+                        <option value="6">104.6 Create and change hard and symbolic links</option>
+                        <option value="7">104.7 Find system files and place files in the correct location</option>
+                    </select>
+                </h5>
+
+                <h5 id="examSubTopic105">Exam Topic 105: Shells, Scripting and Data Management:
+                    <select id="selectExamSubTopic105">
+                        <option selected="selected" value="">Please select exam sub-topic</option>
+                        <option value="1">105.1 Customize and use the shell environment</option>
+                        <option value="2">105.2 Customize or write simple scripts</option>
+                        <option value="3">105.3 SQL data management</option>
+                    </select>
+                </h5>
+
+                <h5 id="examSubTopic106">Exam Topic 106: User Interfaces and Desktops:
+                    <select id="selectExamSubTopic106">
+                        <option selected="selected" value="">Please select exam sub-topic</option>
+                        <option value="1">106.1 Install and configure X11</option>
+                        <option value="2">106.2 Setup a display manager</option>
+                        <option value="3">106.3 Accessibility</option>
+                    </select>
+                </h5>
+
+                <h5 id="examSubTopic107">Exam Topic 107: Administrative Tasks:
+                    <select id="selectExamSubTopic107">
+                        <option selected="selected" value="">Please select exam sub-topic</option>
+                        <option value="1">107.1 Manage user and group accounts and related system files</option>
+                        <option value="2">107.2 Automate system administration tasks by scheduling jobs</option>
+                        <option value="3">107.3 Localisation and internationalisation</option>
+                    </select>
+                </h5>
+
+                <h5 id="examSubTopic108">Exam Topic 108: Essential System Services:
+                    <select id="selectExamSubTopic108">
+                        <option selected="selected" value="">Please select exam sub-topic</option>
+                        <option value="1">108.1 Maintain system time</option>
+                        <option value="2">108.2 System logging</option>
+                        <option value="3">108.3 Mail Transfer Agent (MTA) basics</option>
+                        <option value="4">108.4 Manage printers and printing</option>
+                    </select>
+                </h5>
+
+                <h5 id="examSubTopic109">Exam Topic 109: Networking Fundamentals:
+                    <select id="selectExamSubTopic109">
+                        <option selected="selected" value="">Please select exam sub-topic</option>
+                        <option value="1">109.1 Fundamentals of internet protocols</option>
+                        <option value="2">109.2 Basic network configuration</option>
+                        <option value="3">109.3 Basic network troubleshooting</option>
+                        <option value="4">109.4 Configure client side DNS</option>
+                    </select>
+                </h5>
+
+                <h5 id="examSubTopic110">Exam Topic 110: Security:
+                    <select id="selectExamSubTopic110">
+                        <option selected="selected" value="">Please select exam sub-topic</option>
+                        <option value="1">110.1 Perform security administration tasks</option>
+                        <option value="2">110.2 Setup host security</option>
+                        <option value="3">110.3 Securing data with encryption</option>
+                    </select>
+                </h5>
+
+                <form name="Radio" id="formSingle">
+                  <h5>Enter new question information and possible answers below,</h5>
+                  <h5>then check radio button next to the answer to show which is the corect answer.:</h5>
+                  <br />
+                  <input type="text" id="singleAnswerQuestion" name="sQuestion"  placeholder="Enter Question here" onfocus="this.value=''" autofocus>
+                  <br />
+                  <ul>
+                    <li><input type="text" id="singleAnswer1" placeholder="Enter first possible answer here" onfocus="this.value=''"><input type='radio' id="dbradio1" name='dbsAnswer' value='A' class="radio" /></li>
+                    <li><input type="text" id="singleAnswer2" placeholder="Enter second possible answer here" onfocus="this.value=''"><input type='radio' id="dbradio2" name='dbsAnswer' value='B' class="radio" /></li>
+                    <li><input type="text" id="singleAnswer3" placeholder="Enter third possible answer here" onfocus="this.value=''"><input type='radio' id="dbradio3" name='dbsAnswer' value='C' class="radio" /></li>
+                    <li><input type="text" id="singleAnswer4" placeholder="Enter fourth possible answer here" onfocus="this.value=''"><input type='radio' id="dbradio4" name='dbsAnswer' value='D' class="radio" /></li>
+                    <li><input type="text" id="singleAnswer5" placeholder="Enter fifth possible answer here" onfocus="this.value=''"><input type='radio' id="dbradio5" name='dbsAnswer' value='E' class="radio" /></li>
+                  </ul>
+                </form>
+
+                <form name="CheckBoxChecked" id="formMultiple">
+                  <h5>Enter new question information and possible answers below, also ensure the message box is filled in.</h5>
+                  <h5>Message box should say (Select only three answers, etc...), then check all boxes to the right, if that answer is correct:</h5>
+                  <br />
+                  <input type="text" id="multipleAnswerQuestion" name="mQuestion"  placeholder="Enter Question here" onfocus="this.value=''" autofocus>
+                  <br />
+                  <input type="text" id="multipleAnswerMessage" name="mMessage"  placeholder="Enter Message here, tell user how many answers to select" onfocus="this.value=''">
+                  <br />
+                  <ul>
+                    <li><input type="text" id="multipleAnswer1" placeholder="Enter first possible answer here" onfocus="this.value=''"><input type='checkbox' id="dbCB1" value='A' onClick="return checkboxChecked()" class="checkbox" /></li>
+                    <li><input type="text" id="multipleAnswer2" placeholder="Enter second possible answer here" onfocus="this.value=''"><input type='checkbox' id="dbCB2" value='B' onClick="return checkboxChecked()" class="checkbox" /></li>
+                    <li><input type="text" id="multipleAnswer3" placeholder="Enter third possible answer here" onfocus="this.value=''"><input type='checkbox' id="dbCB3" value='C' onClick="return checkboxChecked()" class="checkbox" /></li>
+                    <li><input type="text" id="multipleAnswer4" placeholder="Enter fourth possible answer here" onfocus="this.value=''"><input type='checkbox' id="dbCB4" value='D' onClick="return checkboxChecked()" class="checkbox" /></li>
+                    <li><input type="text" id="multipleAnswer5" placeholder="Enter fifth possible answer here" onfocus="this.value=''"><input type='checkbox' id="dbCB5" value='E' onClick="return checkboxChecked()" class="checkbox" /></li>
+                  </ul>
+                </form>
+
+
+                <form id="formTyped">
+                  <h5>Enter new question information and possible answers below,</h5>
+                  <h5>Message box should say (Select only three answers, etc...), then check all boxes to the right, if that answer is correct:</h5>
+                  <br />
+                  <input type="text" id="typedQuestion" name="tQuestion"  placeholder="Enter Question here" onfocus="this.value=''" autofocus>
+                  <br />
+                  <input type="text" id="typedMessage" name="tMessage"  placeholder="Enter additional info for user, like if they should use path or options" onfocus="this.value=''">
+                  <br />
+                  <input type="text" id="typedAnswer" name="tAnswer"  placeholder="Enter the full answer to the question here" onfocus="this.value=''">
+                </form>
+
+              <form id="formImageFile">
+                <h5>Question Image File:
+                    <select id="imageFile">
+                        <option value="Y">Yes</option>
+                        <option selected="selected" value="N">No</option>
+                    </select>
+                </h5>
+              </form>
+
+              <form id="formImageLocation">
+                <h5>Question Image File Location:
+
+                </h5>
+              </form>
+
+              <div id="getGrid" width="100%"></div>
+
+                  <!--  Below used for CRUD DB Modification  -->
+                  <label id="dbActionCrud"></label>
+                  <label id="dbGetCrud"></label>
+                  <label id="dbID"></label>
+                  <label id="dbQuestionType"></label>
+                  <label id="dbSubTopic"></label>
+                   <!--  Collect Question, Message and  answer to specific question  -->
+                  <label id="dbQuestion"></label>
+                  <label id="dbMessage"></label>
+                  <label id="dbImageFile"></label>
+                  <label id="dbImageLocation"></label>
+                  <label id="dbAnswer1"></label>
+                  <label id="dbAnswer2"></label>
+                  <label id="dbAnswer3"></label>
+                  <label id="dbAnswer4"></label>
+                  <label id="dbAnswer5"></label>
+                  <label id="dbCorrectAnswer"></label>
+
+
+            </section>  <!-- End User info section  -->
+
+
+             <!--  Section Buttons - Review flagged, unanswered or all questions  -->
+             <section data-role="controlgroup" data-type="horizontal" class="btn-question" id="cButtons">
+                 <button type="submit" class="large-button" class="left" onclick="location.href='http://michaelsharpe.uk'">Cancel</button>
+	         <button type="submit" id="btn-AdminConfirm" class="large-button" class="left">Confirm</button>
+             </section>  <!--  End Section Buttons -  Review questions  -->
+
+       </article>
+
+       <article class="non-exam">
+            <!-- Footer -->
+	    <footer id="footer">
+	        <ul>
+              <li class="left">&copy; All rights reserved.</li>
+              <li class="right">Created by: Sharpe Website Design</li>
+		      </ul>
+     </footer>
+
+        <!--   Here are all the script files required for this app    -->
+        <!-- Main JavScript file for questions -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Main JavaScript File -->
+        <script src="js/admin.js"></script>
+  </article>  <!-- End Non Exam Class  -->
+</body>
+</html>

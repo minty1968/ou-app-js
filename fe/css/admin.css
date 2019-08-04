@@ -1,0 +1,415 @@
+/* ==========================================================================
+                          Reset Browser Defaults
+   ========================================================================== */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1em;
+    -webkit-text-size-adjust: none;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* ==========================================================================
+                          Setup CSS for Exam App
+   ========================================================================== */
+
+/************/
+/*  Floats  */
+/************/
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+/************/
+/*  Header  */
+/************/
+header {
+    background: -moz-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    background: -webkit-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+	background: -ms-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    overflow: hidden;
+    cursor: default;
+    min-height: 3.5em;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+}
+
+header h4 {
+    height: inherit;
+    line-height: inherit;
+    margin: 0px;
+    position: relative;
+}
+
+/*********/
+/*  Nav  */
+/*********/
+
+
+/***********/
+/*  Body  */
+/**********/
+body.is-loading *, body.is-loading *:before, body.is-loading *:after {
+    -moz-animation: none !important;
+    -webkit-animation: none !important;
+    -ms-animation: none !important;
+    animation: none !important;
+    -moz-transition: none !important;
+    -webkit-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
+
+body {
+    line-height: 1.6em;
+    -webkit-text-size-adjust: none;
+    font-size: 20px;
+}
+
+body, input {
+    color: #000000;
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: 1em;
+}
+
+input {
+    margin: 5px;
+    padding: 5px;
+    cursor: default;
+    font-size: 10pt;
+    width: 500px;
+}
+
+label {
+    padding: 10px;
+}
+
+strong, b {
+    font-weight: 600;
+}
+
+em, i {
+    font-style: italic;
+}
+
+p {
+    margin: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+    
+* {
+    box-sizing: border-box;
+}
+
+/*******************/
+/*  H1 to H6 Tags  */
+/*******************/
+h1 {
+    font-size: 1.8em;
+    padding: 1rem;
+    margin: 0;
+    color: black;
+    background: -moz-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    background: -webkit-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+	background: -ms-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+}
+
+h2 {
+    font-size: 1.6em;
+    padding: 1rem;
+    margin: 0;
+    color: black;
+}
+
+h3 {
+    font-size: 1.4em;
+    padding: 1rem;
+    margin: 0;
+    color: black;
+}
+
+h4 {
+    font-size: 1.2em;
+    padding: 1rem;
+    margin: 0;
+    color: black;
+}
+
+h5 {
+    font-size: 1em;
+    padding:0.3rem;
+    margin: 0;
+    color: black;
+}
+
+h6 {
+    font-size: 0.8em;
+    padding: 1rem;
+    margin: 0;
+    color: black;
+}
+
+/*************/
+/*  Article  */
+/*************/
+
+article {
+    cursor: default;
+}
+
+/*************/
+/*  Section  */
+/*************/
+.exam {
+    max-width: 80%;
+    margin: auto; 
+    text-align: auto;
+}
+
+.non-exam {
+    max-width: 100%;
+    margin: auto;  
+}
+
+/************************/
+/*  Radio & Checkboxes  */
+/************************/
+.radio, .checkbox {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    padding: 30px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown:hover {
+    display: block;
+}
+
+/****************/
+/*  List Items  */
+/****************/
+ol, ul {
+    margin-bottom: 10px;
+}
+
+ul, li {
+    padding: 10px;
+    margin-left: 10px;
+    display: list-item;
+    list-style-position: inside;
+}
+
+/*******************/
+/*  Table Element  */
+/*******************/
+table, th, td {
+    border: 3px solid black;
+    table-layout: fixed;
+    width: 100%;
+}
+
+td {
+    cursor: pointer;
+    background: -moz-linear-gradient(top, #ffffff, #D1E3E9);
+    background: -webkit-linear-gradient(top, #ffffff, #D1E3E9);
+	background: -ms-linear-gradient(top, #ffffff, #D1E3E9);
+    text-align:left;
+    font-size: 12px;
+    line-height: 1em;
+    padding: 2px;
+}
+
+    td:hover {
+        background: -moz-linear-gradient(120deg, #a6c1ee 0%, #fbc2eb 100%);
+        background: -webkit-linear-gradient(120deg, #a6c1ee 0%, #fbc2eb 100%));
+		background: -ms-linear-gradient(120deg, #a6c1ee 0%, #fbc2eb 100%));
+    }
+
+    td:active {
+        background: -moz-linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+        background: -webkit-linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%));
+		background: -ms-linear-gradient(120deg, #a6c1ee 0%, #fbc2eb 100%));
+    }
+
+/************/
+/*  Figure  */
+/************/
+figure, figcaption {
+    padding: 0 2em;
+    font-size: 15px;
+    max-width: 80%;
+}
+
+/************/
+/*  Button  */
+/************/
+button {
+    font-size: 1em;
+    padding: 1rem 2rem;
+    background: -moz-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    background: -webkit-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+	background: -ms-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    margin: 1rem;
+}
+
+.large-button {
+    font-size: 1em;
+    padding: 1rem 2rem;
+    background: -moz-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    background: -webkit-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+	background: -ms-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    margin: 1rem;
+}
+
+    .large-button:hover {
+        background: -moz-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+        background: -webkit-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+		background: -ms-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+        color: #ffffff;
+    }
+
+section#qButtons.btn-question {
+    display: inline;
+}
+
+/***************/
+/*  Textboxes  */
+/***************/
+
+
+/*************/
+/*  Classes  */
+/*************/
+
+
+/*********/
+/*  IDs  */
+/*********/
+
+
+/***********/
+/*  Cards  */
+/***********/
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 1rem;
+  background: white;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all .2s linear;
+}
+
+.card:hover {
+  box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
+  transform: translate3D(0, -2px, 0);
+}
+
+
+/************/
+/*  Footer  */
+/************/
+footer {
+    background: -moz-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    background: -webkit-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+	background: -ms-linear-gradient(120deg, #55f470 0%, #f0f282 100%);
+    overflow: hidden;
+    text-align: center;
+    cursor: default;
+    min-height: 3em;
+    left: 0;
+    padding-right: 50px;
+    max-width: 100%;
+}
+
+/*********************/
+/*  Mobile Friendly  */
+/*********************/
+
+@media screen and (max-width: 500px) {
+    header {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    td {
+        text-align:left;
+        font-size: 8px;
+        padding: 0px;
+    }
+
+    footer {
+        float: none;
+        display: block;
+        text-align: left;
+        Padding: 0px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    footer {
+        float: none;
+        display: block;
+        text-align: left;
+        padding-right: 20px; 
+    }
+
+}
+
+

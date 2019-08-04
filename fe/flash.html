@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>LPIC-1 Exam Simulation  ---  Random Flash Cards</title>
+    <meta name="description" content="Web app for LPIC-1 certification simulation exam questions and answers">
+    <!-- Responsive Data -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/flash.css">
+</head>
+
+<body>
+    <!-- Article - This covers the displayed screen area -->
+    <article class="non-exam">
+        <!-- Header -->
+        <header>
+            <h4 class="left"><a href="index.html">LPIC-1 Certificiation Exam Simulation</a></h4>
+        </header>
+    </article>
+
+    <article class="exam">
+         <!--    Section to choose exam type for flash card mode     -->
+	       <section data-role="controlgroup" data-type="horizontal" id="fcInitial">
+	           <br />
+             <h3>Please click either <strong>101-400</strong> or <strong>102-400</strong> buttons</h3>
+		         <input type="text" id="fcType" hidden="true" />
+		         <br />
+             <h4>Depending on which <strong>LPIC-1</strong> flash card Exam questions you require.</h4>
+		         <br />
+             <button id="btn-fc101" class="large-button">LPIC-1 101-400</button>
+		         <button id="btn-fc102" class="large-button">LPIC-1 102-400</button>
+	        </section> <!--  end of initial exam page section  -->
+
+	        <!--  We now move onto the exam questions, each set of 10 questions will have a specific amount of type in the box, single and multiple answer questions,
+               some will also have an image to look at.  Each type of question will be hidden, unless the array requires it to be displayed.      -->
+
+          <!--  Section show image if Question requires it  -->
+          <section data-role="controlgroup" data-type="horizontal" class="questionForm" id="fcImage">
+             <br />
+             <img id="displayFcImage" src="" />
+             <br />
+          </section> <!--  End Section show image if Question requires it  -->
+
+	        <!--  Section Single Answer Question  -->
+	        <section data-role="controlgroup" data-type="horizontal" class="questionForm" id="fcSingle">
+              <form name="Radio">
+		              <label id="questionfcSingle"></label>
+		              <br />
+		              <ul>
+		                  <li><input type='radio' id="radio1" name='Answer' value='A' class="radioAnswer" /><label id="fc1radio"></label></li>
+			                <li><input type='radio' id="radio2" name='Answer' value='B' class="radioAnswer" /> <label id="fc2radio"></label></li>
+			                <li><input type='radio' id="radio3" name='Answer' value='C' class="radioAnswer" /> <label id="fc3radio"></label></li>
+			                <li><input type='radio' id="radio4" name='Answer' value='D' class="radioAnswer" /> <label id="fc4radio"></label></li>
+			                <li><input type='radio' id="radio5" name='Answer' value='E' class="radioAnswer" /> <label id="fc5radio"></label></li>
+			                <li><input type='radio' id="fcradio6" name='Answer' value='' class="radioAnswer" unchecked /> <label visible="hidden" ></label></li>
+                  </ul>
+              </form>
+          </section>  <!--  End Section Single Answer Question  -->
+
+	     <!--  Section Multi-Answer Question  -->
+	     <section data-role="controlgroup" data-type="horizontal" class="questionForm" id="fcMultiple">
+	         <label id="questionfcMultiple"></label>
+		       <i><strong><div id="fcMessage" class="message"></div></strong></i>
+		       <br />
+		       <input type="text" id="ansTotal" name="ansTotal" value="" hidden="true"/>
+		       <ul>
+		           <li><input type="checkbox" id="a1check" onClick="return KeepCount()" value='A'><label id="a1label"></label></li>
+		           <li><input type="checkbox" id="a2check" onClick="return KeepCount()" value='B'><label id="a2label"></label></li>
+		           <li><input type="checkbox" id="a3check" onClick="return KeepCount()" value='C'><label id="a3label"></label></li>
+		           <li><input type="checkbox" id="a4check" onClick="return KeepCount()" value='D'><label id="a4label"></label></li>
+		           <li><input type="checkbox" id="a5check" onClick="return KeepCount()" value='E'><label id="a5label"></label></li>
+		       </ul>
+       </section>  <!--  End Section Multi-Answer Question  -->
+
+   	   <!--  Section Typed Answer Question  -->
+	     <section data-role="controlgroup" data-type="horizontal" class="questionForm" id="fcTyped">
+	         <label id="questionfcTyped">Type in Box</label>
+		       <br />
+           <i><strong><div id="fcTypedMessage" class="message"></div></strong></i>
+           <br />
+		       <input type='text' id="a1typed" name="TypedAnswer" placeholder="Enter your answer here" onfocus="this.value=''" autofocus/>
+       </section> <!--  End Section Typed Answer Question  -->
+
+	     <!-- Section Exam Buttons -->
+       <section data-role="controlgroup" data-type="horizontal" class="btn-question" id="fcButtons">
+          <button type="submit" id="btn-ShowAnswer" class="button" class="left">Check Answer</button>
+          <button type="submit" id="btn-fcPass" class="button" class="left">Reveal Answer</button>
+          <button type="submit" id="btn-FCNext" class="button" class="left">Next Question &raquo;</button>
+		      <button type="submit" id="btn-exitFC" class="button" class="right" onclick="location.href='http://michaelsharpe.uk'">Exit Flash Cards</button>
+	     </section>  <!-- End Section Exam Buttons -->
+
+    <!-- Section FlashCards Result -->
+    <section>
+       <h3 id="fcResult"></h3>
+       <h4 id="fctSummary"></h4>
+
+       <label id="answerSelected" hidden="hidden" ></label>  <!--  Used to store user answer before being stored in array  -->
+	  </section>
+
+  </article>
+
+  <article class="non-exam">
+    <!-- Footer -->
+    <footer id="footer">
+        <ul>
+           <li class="left">&copy; All rights reserved.</li>
+           <li class="right">Created by: Sharpe Website Design</li>
+        </ul>
+    </footer>
+  </article>  <!-- End Non Exam Class  -->
+
+    <!-- Main JavScript file for questions -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- Main JavaScript File -->
+    <script src="js/flash.js"></script>
+    <script src="js/count.js"></script>
+</body>
+
+</html>

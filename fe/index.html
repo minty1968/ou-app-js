@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>LPIC-1 Exam Simulation</title>
+        <meta name="description" content="Web app for LPIC-1 certification simulation exam questions and answers">
+        <!-- Responsive Data -->
+        <meta name="viewport" content="width=max-width, initial-scale=1">
+	<!-- Link to CSS -->
+    	<link rel="stylesheet" href="css/main.css">
+	<!-- Link to FontAwesome -->
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    </head>
+
+    <body>
+        <!-- Article - This covers the displayed screen area -->
+        <article class="non-exam">
+            <!-- Header -->
+            <header>
+               <h4 class="left"><a href="index.html">LPIC-1 Certificiation Exam Simulation</a></h4>
+
+               <!-- Nav Area which covers flag and timer list items -->
+               <nav class="nav right">
+                   <ul>
+                       <li><label id="displayExamType"></label></li> 
+                       <li><label>Question: </label><label id="displayQuestionNumber"></label><label> of </label><span id="displayMaxQuestions"></span></li>
+                       <li><label class="fa-checkbox">Flag: <input type="checkbox" id="flag" unchecked /><i class="fa fa-flag-o unchecked"></i><i class="fa fa-fw fa-flag checked"></i></label></li>
+                       <li><label id="timeLeft">Time left:</label><span id="timer"></span></li>
+                   </ul>
+               </nav>
+            </header>
+        </article> <!-- End Non Exam Class - I want the above to be 100% screen size, but the exam bit only want to cover 80% -->
+    
+        <article class="exam">
+            <!--    Section Initial Exam Page answers needs to choose which exam they would like to do     -->
+            <section data-role="controlgroup" data-type="horizontal" id="fc-exam">
+                <br />
+                <h3>Please click either <strong>Exam Simulation</strong> or <strong>Flash Card</strong> buttons</h3>
+                <input type="text" id="examType" hidden="true" />
+                <br />
+                <h4>Both use the <strong>LPIC-1</strong> exams, 101-400 and 102-400</h4>
+                <br />
+                <button id="btn-examLPIC1" class="large-button">LPIC-1 Exam Simulation</button>
+                <button type="submit" class="large-button" class="right" onclick="location.href='http://michaelsharpe.uk/flash.html'">LPIC-1 Flash Cards</button>
+            </section> <!--  end of initial exam page section  -->
+		
+            <!--    Section Initial Exam Page answers needs to choose which exam they would like to do     -->
+	    <section data-role="controlgroup" data-type="horizontal" id="initial">
+	        <br />
+                <h3>Please click either <strong>101-400</strong> or <strong>102-400</strong> buttons</h3>
+		<input type="text" id="examType" hidden="true" />
+		<br />
+                <h4>Depending on which <strong>LPIC-1</strong> exam you would like to take</h4>
+		<br />
+                <button id="btn-Exam101" class="large-button">LPIC-1 101-400</button>
+		<button id="btn-Exam102" class="large-button">LPIC-1 102-400</button>
+	    </section> <!--  end of initial exam page section  -->
+
+            <!--    Section Disclaimer Page user to read disclaimer section they need to either agree or Disagree if they disagree the exam ends, if they agree we move to next page      -->
+	    <section data-role="controlgroup" data-type="horizontal" id="disclaimer">
+	        <br />
+                <h3>You are about to take an <strong>LPIC-1</strong> exam</h3>
+		<br />
+		<textarea placeholder="Add some comments here" cols="80" rows="15">The only personal data that this application will ask for is your name.
+This is stored in an HTML element which is discarded once you've
+completed the exam. The name field is not mandatory, so can be 
+left blank if required.
+Need to add some comments here regarding how to use this exam.
+The fact these questions are not taken from actual exams,
+they have been designed to simulate real exam experience.
+		</textarea>
+		<br />
+		<h4>Please click agree to continue or disagree to exit</h4>
+		<br />
+		<button id="btn-Summary" class="large-button">Disagree</button>
+		<button id="btn-Agree" class="large-button">Agree</button>
+	    </section>  <!--  End of disclaier section  -->
+
+            <!-- Section Collect User Info - Ask user for their Name and how many questions they would like to answer - multiples of 10  -->
+	    <section data-role="controlgroup" data-type="horizontal" id="userInfo">
+	        <h5>Please enter your name: <input type="text" id="userName" placeholder="Enter your name here" onfocus="this.value=''" autofocus></h5>
+		<h5>Please enter how many questions you would like to answer:
+		    <select id="numMaxQuestions" value="10">
+		        <option selected="selected" value="10">10</option>
+		        <option value="20">20</option>
+		        <option value="30">30</option>
+		        <option value="40">40</option>
+		        <option value="50">50</option>
+		        <option value="60">60</option>
+		    </select>
+		</h5>
+                <h5>Select thwe number of exam questions from the dropdown list between <strong>10</strong> and <strong>60</strong></h5>
+                <h5>You will be allocated <strong>15</strong> mins per <strong>10</strong> questions</h5>
+		<button id="btn-SummaryUI" class="large-button">Exit Exam</button>
+		<button id="btn-ExamConfirm" class="large-button">Continue</button>
+	    </section>  <!-- End User info section  -->
+
+             <!--   Section to confirm questions have been pulled from DB, it will also say how many questions to answer and total exam time    -->
+             <section data-role="controlgroup" data-type="horizontal" id="examConfirm" >
+                 <h5><strong><label id="typedUserName"></label></strong> you have selected <strong><label id="selectedMaxQuestions"></label></strong> questions from the LPIC-1 <strong><label id="selectedExam"></label></strong> exam</h5>
+                 <h5>You have <strong><label id="examTime"></label></strong> minutes to complete the exam, please click the confirm button to start.</h5>
+                 <button id="btn-SummaryExam" class="large-button">Exit Exam</button>
+                 <button id="btn-ExamStart" class="large-button">Confirm Exam Start</button>
+             </section>
+
+             <!--  We now move onto the exam questions, each set of 10 questions will have a specific amount of type in the box, single and multiple answer questions,
+                   some will also have an image to look at.  Each type of question will be hidden, unless the array requires it to be displayed.      -->
+
+             <!--  Section show image if Question requires it  -->
+             <section data-role="controlgroup" data-type="horizontal" class="questionForm" id="showImage">
+                 <br />
+                 <img id="displayImage" src="" />
+                 <br />
+             </section> <!--  End Section show image if Question requires it  -->
+
+
+	     <!--  Section Single Answer Question  -->
+	     <section data-role="controlgroup" data-type="horizontal" class="questionForm" id="Single">
+                 <form name="Radio">
+		     <label id="questionSingle"></label>
+		     <br />
+		     <ul>
+		         <li><input type='radio' id="radio1" name='Answer' value='A' class="radioAnswer" /> <label id="a1radio"></label></li>
+			 <li><input type='radio' id="radio2" name='Answer' value='B' class="radioAnswer" /> <label id="a2radio"></label></li>
+			 <li><input type='radio' id="radio3" name='Answer' value='C' class="radioAnswer" /> <label id="a3radio"></label></li>
+			 <li><input type='radio' id="radio4" name='Answer' value='D' class="radioAnswer" /> <label id="a4radio"></label></li>
+			 <li><input type='radio' id="radio5" name='Answer' value='E' class="radioAnswer" /> <label id="a5radio"></label></li>
+			 <li><input type='radio' id="radio6" name='Answer' value='' class="radioAnswer" unchecked /> <label visible="hidden" ></label></li>
+                     </ul>
+                 </form>
+             </section>  <!--  End Section Single Answer Question  -->
+
+	     <!--  Section Multi-Answer Question  -->
+	     <section data-role="controlgroup" data-type="horizontal" class="questionForm" id="Multiple">
+	         <label id="questionMultiple"></label>
+		 <i><strong><div id="message" class="message"></div></strong></i>
+		 <br />
+		 <input type="text" id="ansTotal" name="ansTotal" value="" hidden="true"/>
+		 <ul>
+		     <li><input type="checkbox" id="a1check" onClick="return KeepCount()" value='A'><label id="a1label"></label></li>
+		     <li><input type="checkbox" id="a2check" onClick="return KeepCount()" value='B'><label id="a2label"></label></li>
+		     <li><input type="checkbox" id="a3check" onClick="return KeepCount()" value='C'><label id="a3label"></label></li>
+		     <li><input type="checkbox" id="a4check" onClick="return KeepCount()" value='D'><label id="a4label"></label></li>
+		     <li><input type="checkbox" id="a5check" onClick="return KeepCount()" value='E'><label id="a5label"></label></li>
+		 </ul>
+             </section>  <!--  End Section Multi-Answer Question  -->
+
+   	     <!--  Section Typed Answer Question  -->
+	     <section data-role="controlgroup" data-type="horizontal" class="questionForm" id="Typed">
+	         <label id="questionTyped">Type in Box</label>
+                 <br />
+                 <i><strong><div id="messageTyped" class="message"></div></strong></i>
+		 <br />
+		 <input type='text' id="a1typed" name="TypedAnswer" placeholder="Enter your answer here" onfocus="this.value=''" autofocus/>
+             </section> <!--  End Section Typed Answer Question  -->
+
+             <!-- Section Exam Buttons -->
+             <section data-role="controlgroup" data-type="horizontal" class="btn-question" id="qButtons">
+                 <button type="submit" id="btn-Previous" class="button" class="left">&laquo; Previous</button>
+                 <button type="submit" id="btn-Next" class="button" class="left">Next &raquo;</button>
+		 <button type="submit"id="btn-SummaryEndExam" class="button" class="right">Finish</button>
+	     </section>  <!-- End Section Exam Buttons -->
+
+             <!-- Section Exam Question Update Button -->
+             <section data-role="controlgroup" data-type="horizontal" class="btn-question" id="uaButton">
+                 <button type="submit"id="btn-UpdateAnswer" class="button" class="left">Update</button>
+             </section>  <!-- End Section Exam Buttons -->
+
+
+             <!--  Section Review Number of questions answered and unanswered  -->
+             <section data-role="controlgroup" data-type="horizontal" class="btn-question" id="rSection">
+                 <br />
+                 <h2 id="reviewHeader1"></h2>
+                 <br />
+                 <h4 id="reviewHeader2"></h4>
+                 <br />
+                 <h4 id="reviewHeader3"></h4>
+                 <br />
+             </section>  <!--  End Section Review flagged, unanswered and all questions  -->
+
+
+	     <!-- Section Summary Page -->
+	     <section data-role="controlgroup" data-type="horizontal" id="qSummary">
+	         <br />
+                 <h2 id="summaryHeader1">Summary of Questions in the Exam</h2>
+	         <br />
+	         <h4 id="summaryHeader2">Click on the box to review questions</h4>
+	         <br />
+                 <div id="summaryPage"></div>
+	         <br />
+             </section>  <!-- End summary header section --> 
+
+             <!--  Section Buttons - Review flagged, unanswered or all questions  -->
+             <section data-role="controlgroup" data-type="horizontal" class="btn-question" id="rButtons">
+                 <button type="submit" id="btn-ReviewFlaggedQuestions" class="large-button" class="left">Review Flagged</button>
+                 <button type="submit" id="btn-ReviewUnansweredQuestions" class="large-button" class="left">Review Unanswered</button>
+                 <button type="submit" id="btn-ReviewAllQuestions" class="large-button" class="right">Review All</button>
+             </section>  <!--  End Section Buttons -  Review questions  -->
+
+
+
+             <!-- Section Summary and Exit Buttons -->
+             <section data-role="controlgroup" data-type="horizontal" class="btn-question" id="seButtons">
+                 <button type="submit" id="btn-SummaryQuestions" class="large-button" class="left">Summary Questions</button>
+                 <button type="submit" id="btn-SummaryPageExit" class="large-button" class="right">Confirm End Exam</button>
+             </section>  <!-- End Summary Page Exit Section  -->
+
+             <!-- Section Exit Exam -->
+	     <section data-role="controlgroup" data-type="horizontal" id="exitExam">
+	         <br />
+		 <h3><label id="examSummary"></label></h3>
+                 <br />
+		 <h4><label id="examResult"></label></h4>
+                 <br />
+                 <h4><label id="examSectionSummary"></label><label id="passFail"></label></h4>
+		 <br />
+                 <h5><label id="examTopicSectionSummary1"></label></label></h5>
+                 <h5><label id="examTopicSectionSummary2"></label></label></h5>
+                 <h5><label id="examTopicSectionSummary3"></label></label></h5>
+                 <h5><label id="examTopicSectionSummary4"></label></label></h5>
+                 <h5><label id="examTopicSectionSummary5"></label></label></h5>
+                 <h5><label id="examTopicSectionSummary6"></label></label></h5>
+		 <button type="submit" id="btn-SummaryPageAllQuestions" class="large-button" class="left">View All Questions</button>
+                 <button type="submit" class="large-button" class="right" onclick="location.href='http://michaelsharpe.uk'">Exit</button>
+             </section>  <!--  End Section Exit Exam  -->
+
+	     <section data-role="controlgroup" data-type="horizontal" id="endExam">
+	         <div id="endExam"></div>
+	     </section>  <!--  End Exam  -->
+
+      	</article> <!-- End Exam Class  -->
+	
+	<article class="non-exam">
+            <!-- Footer -->
+	    <footer id="footer">
+	        <ul>
+                    <li class="left">&copy; All rights reserved.</li>
+                    <li class="right">Created by: Sharpe Website Design</li>
+		</ul>
+            </footer>
+             <ul>
+                 <li><label id="flagSelected" hidden="hidden" ></label></li>   <!--  Used to store if user selects flag icon before being stored in array -->
+                 <li><label id="answerSelected" hidden="hidden" ></label></li>  <!--  Used to store user answer before being stored in array  -->
+                 <li><label id="correctAnsTotal" hidden="hidden"></label></li>  <!--  Used to store users total correct answers  -->
+             </ul>
+
+        <!--
+               Here are all the script files required for this app
+                                                                     -->
+        <!-- Main JavScript file for questions -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- Main JavaScript File -->
+        <script src="js/main.js"></script>
+        <!-- JavScript file for number of answer boxes ticked -->
+        <script src="js/count.js"></script>
+        <!-- JavScript file for exam timer  -->
+        <script src="js/timer.js"></script>
+
+        </article>  <!-- End Non Exam Class  -->
+    </body>
+</html>
